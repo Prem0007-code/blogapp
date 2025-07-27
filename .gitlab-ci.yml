@@ -17,7 +17,7 @@ install_dependencies:
 run_tests:
   stage: test
   script:
-    - echo "No test script defined"  # replace with your test command if needed
+    - echo "npm app.js"  # replace with your test command if needed
 
 build_app:
   stage: build
