@@ -1,0 +1,28 @@
+image: node:18
+
+stages:
+  - install
+  - test
+  - build
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
+  script:
+    - npm install
+
+run_tests:
+  stage: test
+  script:
+    - echo "No test script defined"  # replace with your test command if needed
+
+build_app:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - build
