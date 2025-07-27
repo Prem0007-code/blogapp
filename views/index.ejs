@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Blogs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .blog {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .blog h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>All Chats / Blogs</h1>
+  <nav>
+  <% if (!user) { %>
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
+  <% } else { %>
+    <a href="/logout">Logout</a>
+    <span>Welcome, <%= user.username %></span>
+  <% } %>
+</nav>
+
+  
+  <% blogs.forEach(blog => { %>
+    <div class="blog">
+      <h2><%= blog.type %></h2>
+      <p><%= blog.content %></p>
+      <small><%= blog.author %></small>
+      <br><br>
+      <form action="/blog/<%=blog._id%>/edit" method="GET">
+      <button>Edit</button>
+      <br><br>
+
+    </form>
+    <form action="">
+      <button>Delete</button>
+    </form>
+    </div>
+    
+  <% }) %>
+  <form action="/blog/new" method="GET">
+        <button>Create new Blog</button>
+    </form>
+</body>
+</html>

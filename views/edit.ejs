@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+ 
+</nav>
+
+
+  <h1>Edit Blog</h1>
+
+  <form action="/blog/<%= blog._id %>?_method=PUT" method="POST">
+    <label for="type">Type:</label>
+    <input type="text" name="type" id="type" value="<%= blog.title %>" required>
+
+    <label for="author">Author:</label>
+    <input type="text" name="author" id="author" value="<%= blog.author %>" required>
+
+    <label for="content">Content:</label>
+    <textarea name="content" id="content" rows="5" required><%= blog.content %></textarea>
+
+    <button type="submit">Update Blog</button>
+  </form>
+
+</body>
+</html>
