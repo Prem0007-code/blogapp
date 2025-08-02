@@ -7,12 +7,15 @@ const session = require('express-session');
 const passport= require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require("./models/User.js");
+require('dotenv').config();
+
 const app = express();
 app.use(express.json());
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
+const dburl = process.env.ATLAS_URL;
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -37,7 +40,7 @@ app.use((req, res, next) => {
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/blogs')
+mongoose.connect(dburl)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.error(err));
   
